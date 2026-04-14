@@ -1,0 +1,18 @@
+# Core Web Framework & Server
+fastapi>=0.135.1
+uvicorn[standard]>=0.42.0
+
+# Database & ORM Layer (SQLAlchemy + PostgreSQL)
+sqlalchemy>=2.0.48
+psycopg[binary]>=3.3.3
+alembic>=1.18.4
+
+# Data Handling, Validation, and Configuration
+pydantic>=2.12.5
+pydantic-settings>=2.13.1
+python-dotenv>=1.2.2
+
+# Utility & Security
+pyjwt>=2.12.1          # JSON Web Token handling (Authentication)
+python-slugify>=8.0.4   # Generating URL-friendly slugs
+fastapi-pagination>=0.15.10 # Pagination helper for FastAPI
