@@ -23,7 +23,35 @@ class TransactionTypeEnum(str, Enum):
     QUEST_STATE_CHANGE = "QUEST_STATE_CHANGE"
 
     #SYSTEM
+    ACQUIRE_LOCKS = "ACQUIRE_LOCKS"
+    RELEASE_LOCKS = "RELEASE_LOCKS"
+    TRANSACTION = "TRANSACTION"
+    TRANSACTION_START = "TRANSACTION_START"
+    TRANSACTION_STOP = "TRANSACTION_STOP"
     TRANSACTION_ROLLBACK = "TRANSACTION_ROLLBACK" # Used for a failure state
     SYSTEM_INIT= "SYSTEM_INIT"
 
 
+class Scope(str, Enum):
+    #Entity based Scopes
+    CHARACTER_INVENTORY = "CHARACTER" # Player instance
+    CHARACTER_STORAGE = "ACCOUNT_GLOBAL" #Persisted Long term storage
+    GROUP_GUILD = "GROUP_GUILD" # Group /Collective
+
+    #World Environment
+    WORLD_LOOT = "WORLD_LOOT" #Environment/World
+
+
+    #Process Scopes
+    TRANSACTION_HOLD = "TRANSACTION_HOLD"  #Temp buffer used to hold inputs before they are committed, must clear any items with this scope out of the temp table.
+    QUEUE_BUFFER = "QUEUE_BUFFER" #Prevent race conditions, scope for materials reserved for pending action.
+
+class EntityType(str, Enum):
+    PLAYER = "PLAYER"
+    NPC = "NPC"
+    GUILD = "GUILD"
+    SYSTEM = "SYSTEM"
+
+class RecipeMaterialType(str, Enum):
+    INPUT = "INPUT",
+    OUTPUT = "OUTPUT"

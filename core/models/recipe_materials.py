@@ -1,8 +1,10 @@
-from sqlalchemy import Column, String, ForeignKey, PrimaryKeyConstraint
+
+from sqlalchemy import Column, String, ForeignKey, PrimaryKeyConstraint, Integer, Enum
 from sqlalchemy.orm import relationship
 
-from core.config import Settings, settings
+
 from core.database import Base
+from core.models.enums import RecipeMaterialType
 from core.models.mixins.timestamp_mixin import TimestampMixin
 
 
@@ -14,11 +16,13 @@ class RecipeMaterials(Base, TimestampMixin):
     __tablename__ = "recipe_materials"
 
     __table_args__ = (
-        PrimaryKeyConstraint('recipe_id', 'material_id'),
+        PrimaryKeyConstraint('recipe_id', 'material_id', "type"),
     )
 
     recipe_id = Column(String, ForeignKey("recipes.id", ondelete="CASCADE"), primary_key=True)
     material_id = Column(String, ForeignKey("material.id", ondelete="CASCADE"), primary_key=True)
+    type = Column(Enum(RecipeMaterialType), default=RecipeMaterialType.INPUT, nullable=False)
+    qty = Column(Integer, default=1, nullable=False)
 
     recipe = relationship("Recipe", back_populates="recipe_id")
     material = relationship("Material", back_populates="material_id")

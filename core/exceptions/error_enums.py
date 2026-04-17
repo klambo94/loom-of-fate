@@ -1,0 +1,5 @@
+from enum import Enum
+
+class ErrorCodeEnum(str, Enum):
+    MALFORMED_REQUEST_ERROR = "MALFORMED_REQUEST_ERROR",
+    RESOURCE_LOCKED_ERROR = "RESOURCE_LOCKED_ERROR",
