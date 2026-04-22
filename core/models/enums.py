@@ -55,3 +55,7 @@ class EntityType(str, Enum):
 class RecipeMaterialType(str, Enum):
     INPUT = "INPUT",
     OUTPUT = "OUTPUT"
+
+class RecipeStatus(str, Enum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"

@@ -16,7 +16,12 @@ from .recipe_materials import RecipeMaterials
 from .audit_log import AuditLog  # Depends on all of the above (the final consumer)
 
 # Enums are always foundational and should be grouped together
-from .enums import RarityEnum, TransactionTypeEnum, Scope, EntityType, RecipeMaterialType
+from .enums import (RarityEnum,
+                    TransactionTypeEnum,
+                    Scope,
+                    EntityType,
+                    RecipeMaterialType,
+                    RecipeStatus)
 
 __all__ = [
     "Rarity",

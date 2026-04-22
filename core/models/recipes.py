@@ -1,7 +1,8 @@
-from sqlalchemy import Column, String, Table, ForeignKey, MetaData, Integer
+from sqlalchemy import Column, String, Table, ForeignKey, MetaData, Integer, Enum
 from sqlalchemy.orm import relationship, DeclarativeBase
 from core.config import settings
 from core.database import Base
+from core.models.enums import RecipeStatus
 from core.models.mixins.timestamp_mixin import TimestampMixin
 
 
@@ -20,8 +21,5 @@ class Recipe(Base, TimestampMixin):
     crafting_time_min = Column(Integer, nullable=False, doc="Minutes of the recipe.")
     tool_reqs = Column(String, nullable=False, doc="Tool requirements.")
     materials = Column(String, nullable=False, doc="Materials.")
-    tool_requirements = relationship("RecipieToolRequirement", back_populates="tool_reqs",  doc="Tool Requirements of the recipe.")
-    recipe_materials = relationship("RecipeMaterials", back_populates="materials", doc="Materials of the recipe.")
-
-
+    status = Column(Enum(RecipeStatus),default=RecipeStatus.ACTIVE, nullable=False, doc="Status of the recipe, if it is active or inactive.")
 

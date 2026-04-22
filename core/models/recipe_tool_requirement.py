@@ -15,4 +15,4 @@ class RecipeToolRequirement(Base, TimestampMixin):
     recipe_id = Column(String, ForeignKey("recipe.id", onDelete="CASCADE"), doc="Recipe id of the tool.")\
 
     recipe = relationship("Recipe", back_populates="recipe_tool_requirement")
-    tool = relationship("Tool", back_populates="tool_id")
+    tool = relationship("Tools", back_populates="tool_id")
