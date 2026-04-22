@@ -15,6 +15,8 @@ class Tools(Base, TimestampMixin):
     is_consumable = Column(Boolean, doc="Whether the tool is consumable")
     required_skill_lvl = Column(Integer, doc="Skill level required to use the tool")
     tool_icon = Column(String, doc="Icon of the tool")
+    durability = Column(Integer, nullable=False, doc="How durable the tool is.")
+    efficiency = Column(Integer, nullable=False, doc="How efficient the tool is.")
 
     tool_category_id = Column(String, ForeignKey("tool_category.id", ondelete="CASCADE"), doc="Categorie of the tool")
     tool_category = relationship("ToolCategory", back_populates="tools")

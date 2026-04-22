@@ -20,7 +20,6 @@ class Settings(BaseSettings):
     environment: str = env
     database_url: str
     alembic_url: str
-    db_schema: str
     
 
     @property
@@ -29,9 +28,8 @@ class Settings(BaseSettings):
 
 ALEMBIC_DATABASE_URL = os.getenv("ALEMBIC_DATABASE_URL")
 DATABASE_URL = os.getenv("DATABASE_URL")
-SCHEMA = os.getenv("SCHEMA")
-print(f"[settings] DATABASE_URL={DATABASE_URL}, SCHEMA={SCHEMA}")
+print(f"[settings] DATABASE_URL={DATABASE_URL}")
 
 settings = Settings(alembic_url=ALEMBIC_DATABASE_URL,
                     database_url=DATABASE_URL,
-                    db_schema=SCHEMA,)
+                    )

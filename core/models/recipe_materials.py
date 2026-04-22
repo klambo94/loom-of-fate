@@ -15,10 +15,7 @@ class RecipeMaterials(Base, TimestampMixin):
     """
     __tablename__ = "recipe_materials"
 
-    __table_args__ = (
-        PrimaryKeyConstraint('recipe_id', 'material_id', "type"),
-    )
-
+    id = Column(Integer, primary_key=True, autoincrement=True)
     recipe_id = Column(String, ForeignKey("recipes.id", ondelete="CASCADE"), primary_key=True)
     material_id = Column(String, ForeignKey("material.id", ondelete="CASCADE"), primary_key=True)
     type = Column(Enum(RecipeMaterialType), default=RecipeMaterialType.INPUT, nullable=False)

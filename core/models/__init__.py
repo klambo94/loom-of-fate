@@ -13,6 +13,7 @@ from .tools import Tools
 # The core logic that uses the above models:
 from .recipes import Recipe      # Depends on Material & RecipeRules
 from .recipe_materials import RecipeMaterials
+from .recipe_tool_requirement import RecipeToolRequirement
 from .audit_log import AuditLog  # Depends on all of the above (the final consumer)
 
 # Enums are always foundational and should be grouped together

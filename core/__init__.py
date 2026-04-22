@@ -10,7 +10,8 @@ from core.models.tools import Tools
 # The core logic that uses the above models:
 from core.models.recipes import Recipe      # Depends on Material
 from core.models.recipe_materials import RecipeMaterials
+from core.models.recipe_tool_requirement import RecipeToolRequirement
 from core.models.audit_log import AuditLog  # Depends on all of the above (the final consumer)
 
 # Enums are always foundational and should be grouped together
-from core.models.enums import RarityEnum, TransactionTypeEnum, Scope, EntityType, RecipeMaterialType
+from core.models.enums import RarityEnum, TransactionTypeEnum, Scope, EntityType, RecipeMaterialType, RecipeStatus
